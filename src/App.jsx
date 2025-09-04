@@ -117,7 +117,7 @@ function App() {
     {
       name: 'Cuco',
       image: cuco,
-      quote: '"CUUUCOOO! O tempo de mudar é agora!"'
+      quote: '"CUUUCOOOO! O tempo de mudar é agora!"'
     },
     {
       name: 'Velho Alho',
@@ -136,7 +136,7 @@ function App() {
               <img src={mostardinha} alt="Mostardinha" className="nav-logo-img" />
               <span className="nav-logo-text">Mostardinha</span>
             </a>
-            
+
             <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
               <li><a href="#inicio" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('inicio') }}>Início</a></li>
               <li><a href="#historia" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('historia') }}>História</a></li>
@@ -146,14 +146,14 @@ function App() {
               <li><a href="#quiz" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('quiz') }}>Quiz</a></li>
               <li><a href="#newsletter" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('newsletter') }}>Newsletter</a></li>
             </ul>
-            
+
             <div className="nav-cta">
               <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-small">
                 Comprar - R$ 34,99
               </a>
             </div>
-            
-            <button 
+
+            <button
               className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Abrir menu"
@@ -178,11 +178,11 @@ function App() {
               <span>{isAudioPlaying ? '⏸️' : '▶️'}</span>
             </button>
             <div className="volume-control">
-              <input 
-                type="range" 
-                className="volume-slider" 
-                min="0" 
-                max="100" 
+              <input
+                type="range"
+                className="volume-slider"
+                min="0"
+                max="100"
                 value={volume}
                 onChange={handleVolumeChange}
               />
@@ -202,51 +202,51 @@ function App() {
           <div className="parallax-layer parallax-clouds"></div>
           <div className="parallax-layer parallax-mountains"></div>
         </div>
-        
+
         <div className="floating-elements">
           <div className="star star-1">⭐</div>
-          <div className="star star-2">✨</div>
-          <div className="star star-3">🌟</div>
+          <div className="star star-2">⭐</div>
+          <div className="star star-3">⭐</div>
           <div className="balloon balloon-1">🎈</div>
           <div className="balloon balloon-2">🎈</div>
           <div className="note note-1">🎵</div>
           <div className="note note-2">🎶</div>
           <div className="note note-3">🎵</div>
         </div>
-        
+
         <div className="container">
           <div className="hero-content fade-in-up">
             <div className="hero-text">
               <h1 className="hero-title">
-                🌱 <span className="highlight">Mostardinha</span> é um grão de mostarda
+                <span className="highlight">Mostardinha</span> é um grão de mostarda
               </h1>
               <p className="hero-subtitle">
-                Pequeno no tamanho, mas <strong>gigante em amor, coragem e sabedoria</strong>. 
-                Ele vive em Temperópolis, uma ilha encantada onde os sentimentos criam forma, 
+                Pequeno no tamanho, mas <strong>gigante em amor, coragem e sabedoria</strong>.
+                Ele vive em Temperópolis, uma ilha encantada onde os sentimentos criam forma,
                 os alimentos falam e a vida ensina com leveza.
               </p>
               <p className="hero-description">
                 Conheça o livro digital que está <strong>emocionando crianças, pais, professores e terapeutas</strong>.
               </p>
-              
+
               <div className="book-title-hero">
                 <h2>📘 Mostardinha e sua Turma em: Temperópolis</h2>
                 <p>Uma aventura afetiva com trilha sonora original, personagens cativantes e lições que tocam o coração.</p>
               </div>
-              
+
               <div className="hero-cta">
                 <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
-                  <span>📖</span>
-                  Quero o livro por R$ 34,99
+                  <span>🛒</span>
+                  Quero o Livro por R$ 34,99
                 </a>
-                
+
                 <div className="voucher-section">
                   <label htmlFor="voucherInput">Você tem um vale-presente ou cupom? Insira aqui!</label>
                   <div className="voucher-controls">
-                    <input 
-                      type="text" 
-                      id="voucherInput" 
-                      placeholder="Digite seu cupom..." 
+                    <input
+                      type="text"
+                      id="voucherInput"
+                      placeholder="Digite seu cupom..."
                       className="voucher-input"
                     />
                     <button className="btn btn-outline btn-small">
@@ -256,7 +256,7 @@ function App() {
                 </div>
               </div>
             </div>
-            
+
             <div className="hero-image fade-in-right">
               <img src={mostardinhaCapa} alt="Capa do livro Mostardinha" className="mostardinha-hero" />
             </div>
@@ -268,38 +268,38 @@ function App() {
       <section id="historia" className="section story-section">
         <div className="container">
           <div className="section-header fade-in-up">
-            <h2 className="section-title">🌊 A Jornada de Cadu</h2>
-            <p className="section-subtitle">Uma aventura que começa com uma tempestade e floresce em amizade</p>
+            <h2 className="section-title">📖 A Jornada de Cadu</h2>
+            <p className="section-subtitle">Uma aventura que começa com uma tempestade e floresce em amizades</p>
           </div>
-          
+
           <div className="story-content">
             <div className="story-sequence fade-in-left">
               <div className="sequence-item">
-                <div className="sequence-icon">🚢</div>
+                <div className="sequence-icon">🌊</div>
                 <h3>O Naufrágio</h3>
                 <p>Cadu é um menino que caiu no mar durante uma tempestade...</p>
               </div>
-              <div className="sequence-arrow">→</div>
+              <div className="sequence-arrow">➡️</div>
               <div className="sequence-item">
                 <div className="sequence-icon">🏝️</div>
                 <h3>Temperópolis</h3>
                 <p>...e acordou em uma ilha mágica cheia de surpresas!</p>
               </div>
-              <div className="sequence-arrow">→</div>
+              <div className="sequence-arrow">➡️</div>
               <div className="sequence-item">
-                <div className="sequence-icon">🤝</div>
+                <div className="sequence-icon">👫</div>
                 <h3>Novos Amigos</h3>
                 <p>Conhece Mostardinha, Maionese, Salsinha e outros personagens encantadores.</p>
               </div>
             </div>
-            
+
             <div className="story-description fade-in-right">
               <p>
-                Em Temperópolis, Cadu embarca em uma jornada de <strong>amizade, autoconhecimento, 
+                Em Temperópolis, Cadu embarca em uma jornada de <strong>amizade, autoconhecimento,
                 respeito e esperança</strong> — com música, humor e muito amor.
               </p>
               <p>
-                Uma história que ensina que crescer é um movimento do coração, 
+                Uma história que ensina que crescer é um movimento do coração,
                 onde cada personagem traz uma lição especial sobre a vida.
               </p>
             </div>
@@ -314,7 +314,7 @@ function App() {
             <h2 className="section-title">🎭 A Turma de Temperópolis</h2>
             <p className="section-subtitle">Conheça os personagens que vão encantar seu coração</p>
           </div>
-          
+
           <div className="characters-grid">
             {characters.map((character, index) => (
               <div key={index} className="character-card fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
@@ -361,7 +361,7 @@ function App() {
       <section id="quiz" className="section quiz-section">
         <div className="container">
           <div className="section-header fade-in-up">
-            <h2 className="section-title">🎯 Quiz Emocional</h2>
+            <h2 className="section-title">🧩 Quiz Emocional</h2>
             <p className="section-subtitle">Descubra qual personagem você é!</p>
           </div>
           <div style={{textAlign: 'center'}}>
@@ -370,23 +370,64 @@ function App() {
         </div>
       </section>
 
+      {/* Seção Sobre o Autor */}
+      <section id="autor" className="section author-section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">🧑‍🎨 Sobre o Autor - Gabriel Jaccoud</h2>
+          </div>
+          
+          <div className="author-content">
+            <div className="author-image fade-in-left">
+              <img src="/assets/images/mago2.png" alt="Gabriel Jaccoud" className="author-photo" loading="lazy" />
+            </div>
+            
+            <div className="author-info fade-in-right">
+              <p className="author-description">
+                Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. 
+                Com uma trajetória artística e espiritual profundamente conectada ao universo da infância, 
+                ele dedica sua vida à criação de obras que encantam, ensinam e tocam o coração.
+              </p>
+              
+              <p className="author-description">
+                Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais 
+                que promovem o desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento 
+                começa pela alma — e que a infância é o solo mais fértil para plantar amor, consciência e valores.
+              </p>
+              
+              <p className="author-description">
+                Com sensibilidade, humor e linguagem simbólica, Gabriel transforma histórias em 
+                pontes de empatia entre gerações.
+              </p>
+              
+              <div className="author-mission">
+                <blockquote>
+                  "Escrevo para lembrar que somos todos sementes. E que o amor é a terra onde podemos florescer."
+                </blockquote>
+                <cite>— Gabriel Jaccoud</cite>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter Section */}
       <section id="newsletter" className="section newsletter-section">
         <div className="container">
           <div className="section-header fade-in-up">
-            <h2 className="section-title">📧 Newsletter</h2>
+            <h2 className="section-title">💌 Newsletter</h2>
             <p className="section-subtitle">Receba novidades do mundo de Temperópolis</p>
           </div>
           <div className="newsletter-form">
             <form>
-              <input 
-                type="text" 
-                placeholder="Seu nome" 
+              <input
+                type="text"
+                placeholder="Seu nome"
                 required
               />
-              <input 
-                type="email" 
-                placeholder="Seu e-mail" 
+              <input
+                type="email"
+                placeholder="Seu e-mail"
                 required
               />
               <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
@@ -416,3 +457,5 @@ function App() {
 }
 
 export default App
+
+
