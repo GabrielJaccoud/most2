@@ -411,6 +411,122 @@ function App() {
         </div>
       </section>
 
+      {/* Seção de Depoimentos */}
+      <section id="depoimentos" className="section testimonials-section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">💬 O que dizem sobre Mostardinha</h2>
+            <p className="section-subtitle">Depoimentos de famílias, educadores e terapeutas</p>
+          </div>
+          
+          <div className="testimonials-grid">
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '100ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Mostardinha conquistou minha filha de 6 anos! Ela pede para ouvir a história toda noite. 
+                  As lições sobre amizade e autoconhecimento são transmitidas de forma tão natural e divertida."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Ana Paula Silva</h4>
+                    <span>Mãe da Sofia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '200ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Como educadora, vejo o impacto positivo que Mostardinha tem nas crianças. 
+                  A história desperta a curiosidade e ensina valores importantes de forma lúdica."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Professora Maria Santos</h4>
+                    <span>Escola Crescer Feliz</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '300ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Uso Mostardinha em minhas sessões de terapia infantil. As crianças se identificam 
+                  com os personagens e isso facilita muito o trabalho com emoções e relacionamentos."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Dr. Carlos Mendes</h4>
+                    <span>Psicólogo Infantil</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '400ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Meus gêmeos de 8 anos adoraram! Eles ficam cantando as músicas e imitando os personagens. 
+                  É incrível como a história ensina sobre respeito e amizade."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Roberto e Carla Lima</h4>
+                    <span>Pais do João e Pedro</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '500ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Como bibliotecária, recomendo Mostardinha para todas as famílias. 
+                  É uma obra que une entretenimento e educação de forma magistral."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Luciana Oliveira</h4>
+                    <span>Biblioteca Municipal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card fade-in-up" style={{ animationDelay: '600ms' }}>
+              <div className="testimonial-content">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Mostardinha ajudou minha filha a superar a timidez. Ela se inspirou na coragem 
+                  dos personagens e agora é mais confiante para fazer novos amigos."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-info">
+                    <h4>Fernanda Costa</h4>
+                    <span>Mãe da Isabela</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="testimonials-cta fade-in-up">
+            <p>Faça parte dessa família que já descobriu a magia de Temperópolis!</p>
+            <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+              <span>🌟</span>
+              Quero Mostardinha Agora!
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter Section */}
       <section id="newsletter" className="section newsletter-section">
         <div className="container">
