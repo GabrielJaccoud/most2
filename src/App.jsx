@@ -14,6 +14,7 @@ import cigarra from './assets/images/cigarra.png'
 import cuco from './assets/images/cuco.png'
 import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
+import GallerySection from '../../gallery_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -330,6 +331,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* Music Section */}
       <section id="musicas" className="section music-section">

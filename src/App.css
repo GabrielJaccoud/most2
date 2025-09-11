@@ -1168,3 +1168,105 @@ body {
   }
 }
 
+
+/* Seção de Galeria */
+.gallery-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #e0f2fe 0%, #cce7ff 50%, #b3daff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-section::before {
+  content: ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><g fill=\'%2393c5fd\' opacity=\'0.1\'><circle cx=\'0\' cy=\'0\' r=\'50\'/><circle cx=\'100\' cy=\'100\' r=\'50\'/><circle cx=\'0\' cy=\'100\' r=\'50\'/><circle cx=\'100\' cy=\'0\' r=\'50\'/></g></svg>") repeat;
+  pointer-events: none;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-item {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.gallery-item .caption {
+  padding: 20px;
+  color: #374151;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 60px 0;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .gallery-item img {
+    height: 200px;
+  }
+  
+  .gallery-item .caption {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    border-radius: 15px;
+  }
+  
+  .gallery-item img {
+    height: 180px;
+  }
+  
+  .gallery-item .caption {
+    padding: 15px;
+  }
+}
+
