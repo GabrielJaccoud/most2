@@ -15,6 +15,7 @@ import cuco from './assets/images/cuco.png'
 import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
 import GallerySection from '../../gallery_section.jsx'
+import MusicSection from '../../music_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -336,17 +337,7 @@ function App() {
       <GallerySection />
 
       {/* Music Section */}
-      <section id="musicas" className="section music-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">🎵 Músicas Encantadas</h2>
-            <p className="section-subtitle">Trilha sonora original que toca o coração</p>
-          </div>
-          <div style={{textAlign: 'center'}}>
-            <p style={{fontSize: '1.125rem', color: '#6b7280', marginBottom: '2rem'}}>Em breve: seção completa com todas as músicas do Mostardinha!</p>
-          </div>
-        </div>
-      </section>
+      <MusicSection />
 
       {/* Audiobook Section */}
       <section id="audiobook" className="section audiobook-section">
