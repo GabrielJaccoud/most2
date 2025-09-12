@@ -16,6 +16,7 @@ import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
 import GallerySection from '../../gallery_section.jsx'
 import MusicSection from '../../music_section.jsx'
+import AudiobookSection from '../../audiobook_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -340,17 +341,7 @@ function App() {
       <MusicSection />
 
       {/* Audiobook Section */}
-      <section id="audiobook" className="section audiobook-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">🎧 Audiobook Completo</h2>
-            <p className="section-subtitle">Ouça a aventura completa narrada com carinho</p>
-          </div>
-          <div style={{textAlign: 'center'}}>
-            <p style={{fontSize: '1.125rem', color: '#6b7280', marginBottom: '2rem'}}>Em breve: player completo do audiobook!</p>
-          </div>
-        </div>
-      </section>
+      <AudiobookSection />
 
       {/* Quiz Section */}
       <section id="quiz" className="section quiz-section">
