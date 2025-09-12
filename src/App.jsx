@@ -17,6 +17,7 @@ import trilhaSonora from './assets/temamostardinha.wav'
 import GallerySection from '../../gallery_section.jsx'
 import MusicSection from '../../music_section.jsx'
 import AudiobookSection from '../../audiobook_section.jsx'
+import QuizSection from '../../quiz_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -344,17 +345,7 @@ function App() {
       <AudiobookSection />
 
       {/* Quiz Section */}
-      <section id="quiz" className="section quiz-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">🧩 Quiz Emocional</h2>
-            <p className="section-subtitle">Descubra qual personagem você é!</p>
-          </div>
-          <div style={{textAlign: 'center'}}>
-            <p style={{fontSize: '1.125rem', color: '#6b7280', marginBottom: '2rem'}}>Em breve: quiz interativo completo!</p>
-          </div>
-        </div>
-      </section>
+      <QuizSection />
 
       {/* Seção Sobre o Autor */}
       <section id="autor" className="section author-section">

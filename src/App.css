@@ -1530,3 +1530,139 @@ body {
   }
 }
 
+
+/* Seção de Quiz */
+.quiz-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 50%, #ffb74d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  text-align: center;
+}
+
+.quiz-card h3 {
+  font-size: 1.8rem;
+  color: #e65100;
+  margin-bottom: 30px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.option-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn:hover {
+  background-color: #fb8c00;
+  transform: translateY(-3px);
+}
+
+.quiz-progress {
+  font-size: 1rem;
+  color: #e65100;
+  font-weight: 500;
+}
+
+.quiz-result {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  text-align: center;
+}
+
+.quiz-result h3 {
+  font-size: 2rem;
+  color: #e65100;
+  margin-bottom: 20px;
+}
+
+.result-character {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff6f00;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-result .btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-result .btn:hover {
+  background-color: #fb8c00;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .quiz-card, .quiz-result {
+    padding: 20px;
+  }
+  
+  .quiz-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .option-btn {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
+  
+  .result-character {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-card, .quiz-result {
+    border-radius: 15px;
+  }
+  
+  .quiz-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .option-btn {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+  
+  .result-character {
+    font-size: 1.8rem;
+  }
+}
+
