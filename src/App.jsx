@@ -492,11 +492,14 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="testimonials-cta fade-in-up">
-          <p>Junte-se a centenas de famílias e educadores que se encantaram com Mostardinha!</p>
-          <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
-            Quero o Livro Agora!
-          </a>
+          </div>
+          
+          <div className="testimonials-cta fade-in-up">
+            <p>Junte-se a centenas de famílias e educadores que se encantaram com Mostardinha!</p>
+            <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+              Quero o Livro Agora!
+            </a>
+          </div>
         </div>
       </section>
 
