@@ -14,10 +14,10 @@ import cigarra from './assets/images/cigarra.png'
 import cuco from './assets/images/cuco.png'
 import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
-import GallerySection from '../../gallery_section.jsx'
-import MusicSection from '../../music_section.jsx'
-import AudiobookSection from '../../audiobook_section.jsx'
-import QuizSection from '../../quiz_section.jsx'
+import GallerySection from './components/gallery_section.jsx'
+import MusicSection from './components/music_section.jsx'
+import AudiobookSection from './components/audiobook_section.jsx'
+import QuizSection from './components/quiz_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
