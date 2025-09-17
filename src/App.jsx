@@ -14,10 +14,6 @@ import cigarra from './assets/images/cigarra.png'
 import cuco from './assets/images/cuco.png'
 import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
-import GallerySection from './components/gallery_section.jsx'
-import MusicSection from './components/music_section.jsx'
-import AudiobookSection from './components/audiobook_section.jsx'
-import QuizSection from './components/quiz_section.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -335,17 +331,45 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <GallerySection />
+      {/* Gallery Section - Temporariamente simplificada */}
+      <section id="gallery" className="section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">🖼️ Galeria de Ilustrações</h2>
+            <p className="section-subtitle">Em breve, confira as cenas mais marcantes da jornada!</p>
+          </div>
+        </div>
+      </section>
 
-      {/* Music Section */}
-      <MusicSection />
+      {/* Music Section - Temporariamente simplificada */}
+      <section id="musicas" className="section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">🎵 Músicas Encantadas</h2>
+            <p className="section-subtitle">Trilha sonora original em breve!</p>
+          </div>
+        </div>
+      </section>
 
-      {/* Audiobook Section */}
-      <AudiobookSection />
+      {/* Audiobook Section - Temporariamente simplificada */}
+      <section id="audiobook" className="section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">🎧 Audiobook Completo</h2>
+            <p className="section-subtitle">Ouça a história narrada em breve!</p>
+          </div>
+        </div>
+      </section>
 
-      {/* Quiz Section */}
-      <QuizSection />
+      {/* Quiz Section - Temporariamente simplificada */}
+      <section id="quiz" className="section">
+        <div className="container">
+          <div className="section-header fade-in-up">
+            <h2 className="section-title">🧠 Quiz Emocional</h2>
+            <p className="section-subtitle">Descubra qual personagem você é em breve!</p>
+          </div>
+        </div>
+      </section>
 
       {/* Seção Sobre o Autor */}
       <section id="autor" className="section author-section">
