@@ -126,14 +126,93 @@ function App() {
     }
   ]
 
+  // Quiz Component Logic
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [scores, setScores] = useState({})
+  const [showResult, setShowResult] = useState(false)
+  const [resultCharacter, setResultCharacter] = useState('')
+
+  const questions = [
+    {
+      question: 'Qual sua reação ao ver um amigo triste?',
+      options: [
+        { text: 'Ofereço um abraço e pergunto o que aconteceu.', character: 'Mostardinha' },
+        { text: 'Tento animá-lo com uma piada ou brincadeira.', character: 'Salsinha' },
+        { text: 'Fico sem saber o que fazer, mas me preocupo.', character: 'Catchup' },
+        { text: 'Analiso a situação para encontrar uma solução prática.', character: 'Maionese' },
+      ],
+    },
+    {
+      question: 'Em uma situação nova, você prefere:',
+      options: [
+        { text: 'Explorar tudo com curiosidade e otimismo.', character: 'Mostardinha' },
+        { text: 'Observar de longe antes de se aproximar.', character: 'Catchup' },
+        { text: 'Fazer novas amizades rapidamente.', character: 'Salsinha' },
+        { text: 'Organizar um plano antes de agir.', character: 'Maionese' },
+      ],
+    },
+    {
+      question: 'Qual sua maior qualidade?',
+      options: [
+        { text: 'Otimismo e capacidade de ver o lado bom.', character: 'Mostardinha' },
+        { text: 'Lealdade e proteção aos que ama.', character: 'Repolho' },
+        { text: 'Senso de humor e alegria contagiante.', character: 'Salsinha' },
+        { text: 'Inteligência e habilidade de resolver problemas.', character: 'Maionese' },
+      ],
+    },
+    {
+      question: 'Como você lida com desafios?',
+      options: [
+        { text: 'Com fé e a certeza de que tudo vai dar certo.', character: 'Mostardinha' },
+        { text: 'Com um pouco de medo, mas enfrento.', character: 'Catchup' },
+        { text: 'Com bom humor e buscando o lado divertido.', character: 'Salsinha' },
+        { text: 'Com planejamento e estratégia.', character: 'Maionese' },
+      ],
+    },
+  ]
+
+  const handleAnswer = (character) => {
+    setScores((prevScores) => ({
+      ...prevScores,
+      [character]: (prevScores[character] || 0) + 1,
+    }))
+
+    const nextQuestion = currentQuestion + 1
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion)
+    } else {
+      calculateResult()
+      setShowResult(true)
+    }
+  }
+
+  const calculateResult = () => {
+    let maxScore = 0
+    let character = ''
+    for (const char in scores) {
+      if (scores[char] > maxScore) {
+        maxScore = scores[char]
+        character = char
+      }
+    }
+    setResultCharacter(character)
+  }
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0)
+    setScores({})
+    setShowResult(false)
+    setResultCharacter('')
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="main-h-screen">
       {/* Navigation */}
       <nav className="fixed-nav">
         <div className="container">
           <div className="nav-content">
             <a href="#inicio" className="nav-logo" onClick={(e) => { e.preventDefault(); scrollToSection('inicio') }}>
-              <img src={mostardinha} alt="Mostardinha" className="nav-logo-img" />
+              <img src={mostardinhaCapa} alt="Mostardinha" />
               <span className="nav-logo-text">Mostardinha</span>
             </a>
 
@@ -177,21 +256,20 @@ function App() {
             <button className="audio-btn-fixed" onClick={toggleAudio}>
               <span>{isAudioPlaying ? '⏸️' : '▶️'}</span>
             </button>
-            <div className="volume-control">
-              <input
-                type="range"
-                className="volume-slider"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={handleVolumeChange}
-              />
-            </div>
+          </div>
+          <div className="volume-control">
+            <input
+              type="range"
+              className="volume-slider"
+              min="0"
+              max="100"
+              value={volume}
+              onChange={handleVolumeChange}
+            />
           </div>
         </div>
         <audio ref={audioRef} loop>
           <source src={trilhaSonora} type="audio/wav" />
-          Seu navegador não suporta áudio.
         </audio>
       </div>
 
@@ -221,108 +299,99 @@ function App() {
                 <span className="highlight">Mostardinha</span> é um grão de mostarda
               </h1>
               <p className="hero-subtitle">
-                Pequeno no tamanho, mas <strong>gigante em amor, coragem e sabedoria</strong>.
-                Ele vive em Temperópolis, uma ilha encantada onde os sentimentos criam forma,
+                Pequeno no tamanho, mas <strong>gigante em amor, coragem e sabedoria</strong>. 
+                Ele vive em Temperópolis, uma ilha encantada onde os sentimentos criam forma, 
                 os alimentos falam e a vida ensina com leveza.
               </p>
               <p className="hero-description">
                 Conheça o livro digital que está <strong>emocionando crianças, pais, professores e terapeutas</strong>.
               </p>
-
+              
               <div className="book-title-hero">
                 <h2>📘 Mostardinha e sua Turma em: Temperópolis</h2>
                 <p>Uma aventura afetiva com trilha sonora original, personagens cativantes e lições que tocam o coração.</p>
               </div>
 
-              <div className="hero-cta">
-                <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
-                  <span>🛒</span>
-                  Quero o Livro por R$ 34,99
-                </a>
+              <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+                🛒Quero o Livro por R$ 34,99
+              </a>
 
-                <div className="voucher-section">
-                  <label htmlFor="voucherInput">Você tem um vale-presente ou cupom? Insira aqui!</label>
-                  <div className="voucher-controls">
-                    <input
-                      type="text"
-                      id="voucherInput"
-                      placeholder="Digite seu cupom..."
-                      className="voucher-input"
-                    />
-                    <button className="btn btn-outline btn-small">
-                      Aplicar Cupom
-                    </button>
-                  </div>
+              <div className="coupon-section">
+                <label htmlFor="coupon">Você tem um vale-presente ou cupom? Insira aqui!</label>
+                <div className="coupon-input-group">
+                  <input type="text" id="coupon" placeholder="Digite seu cupom..." />
+                  <button className="btn btn-secondary">Aplicar Cupom</button>
                 </div>
               </div>
-            </div>
-
-            <div className="hero-image fade-in-right">
-              <img src={mostardinhaCapa} alt="Capa do livro Mostardinha" className="mostardinha-hero" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* História Section */}
       <section id="historia" className="section story-section">
         <div className="container">
           <div className="section-header fade-in-up">
             <h2 className="section-title">📖 A Jornada de Cadu</h2>
             <p className="section-subtitle">Uma aventura que começa com uma tempestade e floresce em amizades</p>
           </div>
-
-          <div className="story-content">
-            <div className="story-sequence fade-in-left">
-              <div className="sequence-item">
-                <div className="sequence-icon">🌊</div>
+          
+          <div className="story-timeline">
+            <div className="timeline-item fade-in-left">
+              <div className="timeline-icon">🌊</div>
+              <div className="timeline-content">
                 <h3>O Naufrágio</h3>
                 <p>Cadu é um menino que caiu no mar durante uma tempestade...</p>
               </div>
-              <div className="sequence-arrow">➡️</div>
-              <div className="sequence-item">
-                <div className="sequence-icon">🏝️</div>
+              <div className="timeline-arrow">➡️</div>
+            </div>
+            
+            <div className="timeline-item fade-in-right">
+              <div className="timeline-icon">🏝️</div>
+              <div className="timeline-content">
                 <h3>Temperópolis</h3>
                 <p>...e acordou em uma ilha mágica cheia de surpresas!</p>
               </div>
-              <div className="sequence-arrow">➡️</div>
-              <div className="sequence-item">
-                <div className="sequence-icon">👫</div>
+              <div className="timeline-arrow">➡️</div>
+            </div>
+            
+            <div className="timeline-item fade-in-left">
+              <div className="timeline-icon">👫</div>
+              <div className="timeline-content">
                 <h3>Novos Amigos</h3>
                 <p>Conhece Mostardinha, Maionese, Salsinha e outros personagens encantadores.</p>
               </div>
             </div>
-
-            <div className="story-description fade-in-right">
-              <p>
-                Em Temperópolis, Cadu embarca em uma jornada de <strong>amizade, autoconhecimento,
-                respeito e esperança</strong> — com música, humor e muito amor.
-              </p>
-              <p>
-                Uma história que ensina que crescer é um movimento do coração,
-                onde cada personagem traz uma lição especial sobre a vida.
-              </p>
-            </div>
+          </div>
+          
+          <div className="story-description fade-in-up">
+            <p>
+              Em Temperópolis, Cadu embarca em uma jornada de <strong>amizade, autoconhecimento, respeito e esperança</strong> — 
+              com música, humor e muito amor.
+            </p>
+            <p>
+              Uma história que ensina que crescer é um movimento do coração, onde cada personagem traz uma lição especial sobre a vida.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Characters Section */}
+      {/* Personagens Section */}
       <section id="personagens" className="section characters-section">
         <div className="container">
           <div className="section-header fade-in-up">
             <h2 className="section-title">🎭 A Turma de Temperópolis</h2>
             <p className="section-subtitle">Conheça os personagens que vão encantar seu coração</p>
           </div>
-
+          
           <div className="characters-grid">
             {characters.map((character, index) => (
               <div key={index} className="character-card fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="character-image">
-                  <img src={character.image} alt={character.name} loading="lazy" />
+                  <img src={character.image} alt={character.name} />
                 </div>
                 <div className="character-info">
-                  <h3>{character.name}</h3>
+                  <h3 className="character-name">{character.name}</h3>
                   <p className="character-quote">{character.quote}</p>
                 </div>
               </div>
@@ -331,8 +400,8 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section - Temporariamente simplificada */}
-      <section id="gallery" className="section">
+      {/* Galeria Section */}
+      <section id="galeria" className="section gallery-section">
         <div className="container">
           <div className="section-header fade-in-up">
             <h2 className="section-title">🖼️ Galeria de Ilustrações</h2>
@@ -341,37 +410,131 @@ function App() {
         </div>
       </section>
 
-      {/* Music Section - Temporariamente simplificada */}
-      <section id="musicas" className="section">
+      {/* Music Section - Implementação Completa */}
+      <section id="musicas" className="section music-section">
         <div className="container">
           <div className="section-header fade-in-up">
-            <h2 className="section-title">🎵 Músicas Encantadas</h2>
-            <p className="section-subtitle">Trilha sonora original em breve!</p>
+            <h2 className="section-title">🎶 Músicas Encantadas</h2>
+            <p className="section-subtitle">A trilha sonora original que toca o coração</p>
+          </div>
+          <div className="music-player-container fade-in-up" style={{ animationDelay: '200ms' }}>
+            <div className="music-player">
+              <div className="album-art">
+                <img src={mostardinhaCapa} alt="Capa do Álbum Mostardinha" />
+              </div>
+              <div className="track-info">
+                <h3 className="track-title">Tema de Mostardinha</h3>
+                <p className="track-artist">Gabriel Jaccoud</p>
+                <div className="progress-bar">
+                  <div className="progress" style={{ width: '60%' }}></div>
+                </div>
+                <div className="time-info">
+                  <span>2:10</span>
+                  <span>3:15</span>
+                </div>
+              </div>
+              <div className="player-controls">
+                <button className="control-btn">⏮️</button>
+                <button className="control-btn play-pause" onClick={toggleAudio}>
+                  {isAudioPlaying ? '⏸️' : '▶️'}
+                </button>
+                <button className="control-btn">⏭️</button>
+              </div>
+            </div>
+            <div className="playlist">
+              <h4 className="playlist-title">Próximas Músicas:</h4>
+              <ul>
+                <li>
+                  <a href="#">Canção da Amizade</a>
+                  <span>2:45</span>
+                </li>
+                <li>
+                  <a href="#">Rock do Repolho</a>
+                  <span>4:02</span>
+                </li>
+                <li>
+                  <a href="#">Valsa da Maionese</a>
+                  <span>3:30</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Audiobook Section - Temporariamente simplificada */}
-      <section id="audiobook" className="section">
+      {/* Audiobook Section - Implementação Completa */}
+      <section id="audiobook" className="section audiobook-section">
         <div className="container">
           <div className="section-header fade-in-up">
             <h2 className="section-title">🎧 Audiobook Completo</h2>
-            <p className="section-subtitle">Ouça a história narrada em breve!</p>
+            <p className="section-subtitle">Ouça a aventura completa narrada com carinho</p>
+          </div>
+          <div className="audiobook-player-container fade-in-up" style={{ animationDelay: '200ms' }}>
+            <div className="audiobook-player">
+              <div className="audiobook-cover">
+                <img src={mostardinhaCapa} alt="Capa do Audiobook Mostardinha" />
+              </div>
+              <div className="audiobook-controls">
+                <h3 className="audiobook-title">Mostardinha e sua Turma em: Temperópolis</h3>
+                <p className="audiobook-narrator">Narrado por Gabriel Jaccoud</p>
+                <audio controls className="full-width-audio-player">
+                  <source src={trilhaSonora} type="audio/wav" />
+                  Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <p className="audiobook-description">
+                  Embarque na história de Cadu e Mostardinha com a narração envolvente de Gabriel Jaccoud.
+                  Uma experiência imersiva para toda a família!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Quiz Section - Temporariamente simplificada */}
-      <section id="quiz" className="section">
+      {/* Quiz Section - Implementação Completa */}
+      <section id="quiz" className="section quiz-section">
         <div className="container">
           <div className="section-header fade-in-up">
-            <h2 className="section-title">🧠 Quiz Emocional</h2>
-            <p className="section-subtitle">Descubra qual personagem você é em breve!</p>
+            <h2 className="section-title">🧩 Quiz Emocional</h2>
+            <p className="section-subtitle">Descubra qual personagem de Temperópolis você é!</p>
           </div>
+
+          {!showResult ? (
+            <div className="quiz-card fade-in-up">
+              <h3>{questions[currentQuestion].question}</h3>
+              <div className="options-grid">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <button
+                    key={index}
+                    className="option-btn"
+                    onClick={() => handleAnswer(option.character)}
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+              <div className="quiz-progress">
+                Questão {currentQuestion + 1} de {questions.length}
+              </div>
+            </div>
+          ) : (
+            <div className="quiz-result fade-in-up">
+              <h3>Parabéns! Você é...</h3>
+              <p className="result-character">{resultCharacter}</p>
+              <p className="result-description">
+                {resultCharacter === 'Mostardinha' && 'Você é otimista, corajoso e sempre vê o lado bom das coisas!'}
+                {resultCharacter === 'Maionese' && 'Você é inteligente, organizada e sempre busca soluções práticas!'}
+                {resultCharacter === 'Salsinha' && 'Você é alegre, divertida e espalha bom humor por onde passa!'}
+                {resultCharacter === 'Catchup' && 'Você é cauteloso, mas corajoso quando precisa ser!'}
+                {resultCharacter === 'Repolho' && 'Você é leal, protetor e sempre defende quem ama!'}
+              </p>
+              <button className="btn btn-primary" onClick={resetQuiz}>Fazer Novamente</button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Seção Sobre o Autor */}
+      {/* Sobre o Autor Section */}
       <section id="autor" className="section author-section">
         <div className="container">
           <div className="section-header fade-in-up">
@@ -380,23 +543,22 @@ function App() {
           
           <div className="author-content">
             <div className="author-image fade-in-left">
-              <img src="/assets/images/mago2.png" alt="Gabriel Jaccoud" className="author-photo" loading="lazy" />
+              <img src="/assets/images/gabriel-jaccoud.jpg" alt="Gabriel Jaccoud" />
             </div>
-            
-            <div className="author-info fade-in-right">
-              <p className="author-description">
-                Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. 
-                Com uma trajetória artística e espiritual profundamente conectada ao universo da infância, 
-                ele dedica sua vida à criação de obras que encantam, ensinam e tocam o coração.
+            <div className="author-text fade-in-right">
+              <p>
+                Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. Com uma trajetória artística e 
+                espiritual profundamente conectada ao universo da infância, ele dedica sua vida à criação de 
+                obras que encantam, ensinam e tocam o coração.
               </p>
               
-              <p className="author-description">
-                Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais 
-                que promovem o desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento 
-                começa pela alma — e que a infância é o solo mais fértil para plantar amor, consciência e valores.
+              <p>
+                Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais que promovem o 
+                desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento começa pela alma — e que a 
+                infância é o solo mais fértil para plantar amor, consciência e valores.
               </p>
               
-              <p className="author-description">
+              <p>
                 Com sensibilidade, humor e linguagem simbólica, Gabriel transforma histórias em 
                 pontes de empatia entre gerações.
               </p>
@@ -505,8 +667,8 @@ function App() {
               <div className="testimonial-content">
                 <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <p className="testimonial-text">
-                  "Mostardinha ajudou minha filha a superar a timidez. Ela se inspirou na coragem 
-                  dos personagens e agora é mais confiante para fazer novos amigos."
+                  "Mostardinha ajudou minha filha a superar a timidez. Ela se inspirou na coragem dos personagens 
+                  e agora é mais confiante para fazer novos amigos."
                 </p>
                 <div className="testimonial-author">
                   <div className="author-info">
@@ -520,7 +682,7 @@ function App() {
           
           <div className="testimonials-cta fade-in-up">
             <p>Junte-se a centenas de famílias e educadores que se encantaram com Mostardinha!</p>
-            <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+            <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Quero o Livro Agora!
             </a>
           </div>
@@ -534,40 +696,15 @@ function App() {
             <h2 className="section-title">💌 Newsletter</h2>
             <p className="section-subtitle">Receba novidades do mundo de Temperópolis</p>
           </div>
-          <div className="newsletter-form">
+          
+          <div className="newsletter-form fade-in-up">
             <form>
-              <input
-                type="text"
-                placeholder="Seu nome"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Seu e-mail"
-                required
-              />
-              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
-                <span>✨</span>
-                Quero receber!
-              </button>
+              <input type="email" placeholder="Seu melhor e-mail" required />
+              <button type="submit" className="btn btn-primary">✨Quero receber!</button>
             </form>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-logo">
-              <img src={mostardinha} alt="Mostardinha" />
-              <h3>Mostardinha</h3>
-            </div>
-            <p>Uma aventura afetiva que toca corações em Temperópolis</p>
-            <p className="copyright">© 2024 Gabriel Jaccoud. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
