@@ -7,9 +7,15 @@ const MusicSection = () => {
   const audioRef = useRef(null);
 
   const songs = [
-    { id: 1, title: 'Canção da Amizade', artist: 'Gabriel Jaccoud', src: '/assets/music/cancao_da_amizade.mp3', duration: '2:45' },
-    { id: 2, title: 'Rock do Repolho', artist: 'Gabriel Jaccoud', src: '/assets/music/rock_do_repolho.mp3', duration: '4:02' },
-    { id: 3, title: 'Valsa da Maionese', artist: 'Gabriel Jaccoud', src: '/assets/music/valsa_da_maionese.mp3', duration: '3:30' },
+    { id: 1, title: 'Mostardinha', artist: 'Gabriel Jaccoud', src: '/assets/music/Mostardinha.mp3', duration: '2:45' },
+    { id: 2, title: 'Tesouros', artist: 'Gabriel Jaccoud', src: '/assets/music/Tesouros.mp3', duration: '4:02' },
+    { id: 3, title: 'A Cigarra e a Formiga', artist: 'Gabriel Jaccoud', src: '/assets/music/A_Cigarra_e_a_Formiga.mp3', duration: '3:30' },
+    { id: 4, title: 'Salsinha e Repolho', artist: 'Gabriel Jaccoud', src: '/assets/music/Salsinha_e_Repolho.mp3', duration: '2:50' },
+    { id: 5, title: 'O Elefante', artist: 'Gabriel Jaccoud', src: '/assets/music/O_Elefante.mp3', duration: '3:10' },
+    { id: 6, title: 'Brilhe Brilhe', artist: 'Gabriel Jaccoud', src: '/assets/music/Brilhe_Brilhe.mp3', duration: '2:20' },
+    { id: 7, title: 'O Cuco', artist: 'Gabriel Jaccoud', src: '/assets/music/O_Cuco.mp3', duration: '3:00' },
+    { id: 8, title: 'O Trem', artist: 'Gabriel Jaccoud', src: '/assets/music/O_Trem.mp3', duration: '2:15' },
+    { id: 9, title: 'Cem Léguas', artist: 'Gabriel Jaccoud', src: '/assets/music/Cem_Leguas.mp3', duration: '3:40' },
   ];
 
   const playSong = (song) => {
