@@ -1,4 +1,6 @@
+// src/components/QuizSection.jsx
 import React, { useState } from 'react';
+import './QuizSection.css';
 
 const QuizSection = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -8,117 +10,139 @@ const QuizSection = () => {
 
   const quizQuestions = [
     {
-      question: 'Qual sua reação ao ver um amigo triste?',
-      options: [
-        'Ofereço um abraço e pergunto o que aconteceu.',
-        'Tento animá-lo com uma piada ou brincadeira.',
-        'Fico sem saber o que fazer, mas me preocupo.',
-        'Analiso a situação para encontrar uma solução prática.',
-      ],
+      question: "Qual é seu maior medo?",
+      options: ["Ficar sozinho(a)", "Não ser aceito(a)", "Falhar", "Mudanças"],
       correctAnswer: 0,
+      personagem: "Mostardinha"
     },
     {
-      question: 'O que você faz quando encontra um desafio grande?',
-      options: [
-        'Peço ajuda aos amigos e trabalho em equipe.',
-        'Encaro de frente, com coragem e determinação.',
-        'Penso muito antes de agir, buscando a melhor estratégia.',
-        'Busco novas formas de resolver, com criatividade.',
-      ],
+      question: "Como você lida com desafios?",
+      options: ["Busco ajuda", "Encaro de frente", "Evito", "Penso muito antes de agir"],
       correctAnswer: 1,
+      personagem: "Maionese"
     },
     {
-      question: 'Qual sentimento te move mais?',
-      options: [
-        'Amizade e companheirismo.',
-        'Coragem e aventura.',
-        'Sabedoria e reflexão.',
-        'Esperança e otimismo.',
-      ],
-      correctAnswer: 0,
+      question: "O que te faz mais feliz?",
+      options: ["Brincar com amigos", "Aprender coisas novas", "Ter tranquilidade", "Sentir-se útil"],
+      correctAnswer: 2,
+      personagem: "Salsinha"
     },
     {
-      question: 'Se você pudesse ter um superpoder, qual seria?',
-      options: [
-        'Fazer todos se sentirem amados.',
-        'Ter a força para proteger quem eu amo.',
-        'Saber todas as respostas.',
-        'Inspirar alegria e leveza.',
-      ],
+      question: "Qual seu conselho favorito?",
+      options: ["Seja gentil", "Tenha coragem", "Pense antes de agir", "Desfrute do momento"],
       correctAnswer: 3,
-    },
+      personagem: "Velho Alho"
+    }
   ];
 
-  const handleAnswerClick = (optionIndex) => {
-    setSelectedAnswer(optionIndex);
+  const handleAnswerSelect = (answerIndex) => {
+    setSelectedAnswer(answerIndex);
+    if (answerIndex === quizQuestions[currentQuestion].correctAnswer) {
+      setScore(score + 1);
+    }
   };
 
   const handleNextQuestion = () => {
-    if (selectedAnswer === quizQuestions[currentQuestion].correctAnswer) {
-      setScore(score + 1);
-    }
-    setSelectedAnswer(null);
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer(null);
     } else {
       setShowResults(true);
     }
   };
 
-  const restartQuiz = () => {
+  const resetQuiz = () => {
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setScore(0);
     setShowResults(false);
   };
 
+  const getPersonagemImage = (personagem) => {
+    // Substitua pelos caminhos reais das imagens dos personagens
+    const images = {
+      "Mostardinha": "/assets/images/Mostardinha.png",
+      "Maionese": "/assets/images/Maionese.png",
+      "Salsinha": "/assets/images/Salsinha.png",
+      "Velho Alho": "/assets/images/VelhoAlho.png"
+    };
+    return images[personagem] || "/assets/images/default.png";
+  };
+
   return (
-    <section id="quiz" className="section">
+    <section id="quiz" className="section quiz-section">
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">🧩 Quiz Emocional</h2>
-          <p className="section-subtitle">Descubra qual personagem de Temperópolis você é!</p>
+          <h2 className="section-title">🎭 Quiz Emocional</h2>
+          <p className="section-subtitle">Descubra qual personagem de Temperópolis é você!</p>
         </div>
 
-        <div className="quiz-content fade-in-up">
-          {!showResults ? (
-            <div className="quiz-card">
+        {!showResults ? (
+          <div className="quiz-container fade-in-up">
+            <div className="question-box">
               <h3>{quizQuestions[currentQuestion].question}</h3>
-              <div className="quiz-options">
-                {quizQuestions[currentQuestion].options.map((option, index) => (
-                  <button
-                    key={index}
-                    className={`quiz-option-btn ${selectedAnswer === index ? 'selected' : ''}`}
-                    onClick={() => handleAnswerClick(index)}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
+            </div>
+
+            <div className="options-box">
+              {quizQuestions[currentQuestion].options.map((option, index) => (
+                <button
+                  key={index}
+                  className={`option-button ${selectedAnswer === index ? 'selected' : ''}`}
+                  onClick={() => handleAnswerSelect(index)}
+                  disabled={selectedAnswer !== null}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+
+            {selectedAnswer !== null && (
               <button
-                className="btn btn-primary"
+                className="next-button btn btn-primary"
                 onClick={handleNextQuestion}
-                disabled={selectedAnswer === null}
               >
                 {currentQuestion < quizQuestions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
               </button>
-              <p className="question-counter">Questão {currentQuestion + 1} de {quizQuestions.length}</p>
-            </div>
-          ) : (
-            <div className="quiz-results">
-              <h3>Seu Resultado:</h3>
-              <p>Você acertou {score} de {quizQuestions.length} perguntas.</p>
-              {/* Lógica para determinar o personagem com base na pontuação */}
-              <p>Você é como o Mostardinha: Pequeno no tamanho, mas gigante em amor, coragem e sabedoria!</p>
-              <button className="btn btn-primary" onClick={restartQuiz}>Refazer Quiz</button>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        ) : (
+          <div className="results-container fade-in-up">
+            <h3>🎉 Parabéns! Você é o(a) {quizQuestions[quizQuestions.length - 1].personagem}!</h3>
+            <img
+              src={getPersonagemImage(quizQuestions[quizQuestions.length - 1].personagem)}
+              alt={`Personagem ${quizQuestions[quizQuestions.length - 1].personagem}`}
+              className="personagem-image"
+            />
+            <p>Você acertou {score} de {quizQuestions.length} perguntas.</p>
+            <button
+              className="restart-button btn btn-secondary"
+              onClick={resetQuiz}
+            >
+              Refazer o Quiz
+            </button>
+          </div>
+        )}
+
+        {/* Botão para enviar resultado por e-mail */}
+        {showResults && (
+          <div className="email-result-box">
+            <p>Quer receber seu resultado por e-mail?</p>
+            <form>
+              <input
+                type="email"
+                placeholder="Seu e-mail"
+                required
+                className="email-input"
+              />
+              <button type="submit" className="send-email-button btn btn-primary">
+                Enviar Resultado
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default QuizSection;
-
-
