@@ -1,59 +1,95 @@
-// src/components/AudiobookSection.jsx
-import React, { useState, useRef } from 'react';
-import './AudiobookSection.css';
+/* src/components/AudiobookSection.css */
+.audiobook-section {
+  background-color: #f8f9fa;
+  padding: 6rem 2rem;
+}
 
-const AudiobookSection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
+.audiobook-player-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
 
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+.audiobook-player {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
 
-  return (
-    <section id="audiobook" className="section audiobook-section">
-      <div className="container">
-        <div className="section-header fade-in-up">
-          <h2 className="section-title">🎧 Audiobook Completo</h2>
-          <p className="section-subtitle">Ouça a aventura completa narrada com carinho</p>
-        </div>
+.audiobook-cover img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-        <div className="audiobook-player-container fade-in-up" style={{ animationDelay: '200ms' }}>
-          <div className="audiobook-player">
-            <div className="audiobook-cover">
-              <img src="/assets/images/CAPA.png" alt="Capa do Audiobook Mostardinha" />
-            </div>
-            <div className="audiobook-controls">
-              <h3 className="audiobook-title">Mostardinha e sua Turma em: Temperópolis</h3>
-              <p className="audiobook-narrator">Narrado por Gabriel Jaccoud</p>
+.audiobook-controls {
+  flex: 1;
+}
 
-              <div className="player-controls">
-                <button onClick={togglePlayPause} className="play-button">
-                  {isPlaying ? '⏸️' : '▶️'}
-                </button>
-                <audio ref={audioRef} controls className="full-width-audio-player">
-                  <source src="/assets/temamostardinha.wav" type="audio/wav" />
-                  Seu navegador não suporta o elemento de áudio.
-                </audio>
-              </div>
+.audiobook-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
 
-              <p className="audiobook-description">
-                Embarque na história de Cadu e Mostardinha com a narração envolvente de Gabriel Jaccoud.
-                Uma experiência imersiva para toda a família!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+.audiobook-narrator {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
 
-export default AudiobookSection;
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.play-button {
+  background: #ffcc00;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background: #ffbb00;
+  transform: scale(1.1);
+}
+
+.full-width-audio-player {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.audiobook-description {
+  color: #555;
+  line-height: 1.6;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .audiobook-player {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .audiobook-cover img {
+    width: 120px;
+  }
+
+  .player-controls {
+    justify-content: center;
+  }
+}
