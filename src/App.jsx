@@ -17,6 +17,7 @@ import trilhaSonora from './assets/temamostardinha.wav'
 import MusicSection from './components/MusicSection'
 import AudiobookSection from './components/AudiobookSection'
 import QuizSection from './components/QuizSection'
+import GallerySection from './components/GallerySection'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -334,15 +335,8 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section - Temporariamente simplificada */}
-      <section id="gallery" className="section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">🖼️ Galeria de Ilustrações</h2>
-            <p className="section-subtitle">Em breve, confira as cenas mais marcantes da jornada!</p>
-          </div>
-        </div>
-      </section>
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* Music Section */}
       <MusicSection />
