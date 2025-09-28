@@ -17,7 +17,7 @@ import trilhaSonora from './assets/temamostardinha.wav'
 import MusicSection from './components/MusicSection'
 import AudiobookSection from './components/AudiobookSection'
 import QuizSection from './components/QuizSection'
-import GallerySection from './components/GallerySection'
+import ReadingImportanceSection from './components/ReadingImportanceSection'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -147,6 +147,7 @@ function App() {
               <li><a href="#personagens" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('personagens') }}>Personagens</a></li>
               <li><a href="#musicas" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('musicas') }}>Músicas</a></li>
               <li><a href="#audiobook" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('audiobook') }}>Audiobook</a></li>
+              <li><a href="#leitura-familia" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('leitura-familia') }}>Leitura em Família</a></li>
               <li><a href="#quiz" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('quiz') }}>Quiz</a></li>
               <li><a href="#newsletter" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('newsletter') }}>Newsletter</a></li>
             </ul>
@@ -335,8 +336,8 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <GallerySection />
+      {/* Reading Importance Section */}
+      <ReadingImportanceSection />
 
       {/* Music Section */}
       <MusicSection />
