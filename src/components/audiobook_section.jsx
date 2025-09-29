@@ -1,6 +1,5 @@
 // src/components/AudiobookSection.jsx
 import React, { useState, useRef } from 'react';
-import './AudiobookSection.css';
 
 const AudiobookSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);

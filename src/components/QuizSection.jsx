@@ -1,6 +1,5 @@
 // src/components/QuizSection.jsx
 import React, { useState } from 'react';
-import './QuizSection.css';
 
 const QuizSection = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
