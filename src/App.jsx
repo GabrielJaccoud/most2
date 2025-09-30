@@ -14,16 +14,25 @@ import cigarra from './assets/images/cigarra.png'
 import cuco from './assets/images/cuco.png'
 import alho from './assets/images/alho.png'
 import trilhaSonora from './assets/temamostardinha.wav'
+
+// Import components
 import MusicSection from './components/MusicSection'
 import AudiobookSection from './components/AudiobookSection'
 import QuizSection from './components/QuizSection'
 import ReadingImportanceSection from './components/ReadingImportanceSection'
+import VoicesSection from './components/VoicesSection'
+import BehindScenesSection from './components/BehindScenesSection'
+import WisdomSection from './components/WisdomSection'
+import PublisherSection from './components/PublisherSection'
+import FinalCTASection from './components/FinalCTASection'
+import Footer from './components/Footer'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isAudioPlaying, setIsAudioPlaying] = useState(false)
   const [volume, setVolume] = useState(50)
   const audioRef = useRef(null)
+  const [isReadingTipsModalOpen, setIsReadingTipsModalOpen] = useState(false);
 
   // Audio controls
   const toggleAudio = () => {
@@ -149,6 +158,9 @@ function App() {
               <li><a href="#audiobook" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('audiobook') }}>Audiobook</a></li>
               <li><a href="#leitura-familia" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('leitura-familia') }}>Leitura em Família</a></li>
               <li><a href="#quiz" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('quiz') }}>Quiz</a></li>
+              <li><a href="#vozes" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('vozes') }}>Vozes</a></li>
+              <li><a href="#bastidores" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('bastidores') }}>Bastidores</a></li>
+              <li><a href="#editora-humanizar" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('editora-humanizar') }}>Editora</a></li>
               <li><a href="#newsletter" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('newsletter') }}>Newsletter</a></li>
             </ul>
 
@@ -337,7 +349,7 @@ function App() {
       </section>
 
       {/* Reading Importance Section */}
-      <ReadingImportanceSection />
+      <ReadingImportanceSection setIsReadingTipsModalOpen={setIsReadingTipsModalOpen} />
 
       {/* Music Section */}
       <MusicSection />
@@ -348,161 +360,20 @@ function App() {
       {/* Quiz Section */}
       <QuizSection />
 
-      {/* Seção Sobre o Autor */}
-      <section id="autor" className="section author-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">🧑‍🎨 Sobre o Autor - Gabriel Jaccoud</h2>
-          </div>
-          
-          <div className="author-content">
-            <div className="author-image fade-in-left">
-              <img src="/assets/images/mago2.png" alt="Gabriel Jaccoud" className="author-photo" loading="lazy" />
-            </div>
-            
-            <div className="author-info fade-in-right">
-              <p className="author-description">
-                Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. 
-                Com uma trajetória artística e espiritual profundamente conectada ao universo da infância, 
-                ele dedica sua vida à criação de obras que encantam, ensinam e tocam o coração.
-              </p>
-              
-              <p className="author-description">
-                Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais 
-                que promovem o desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento 
-                começa pela alma — e que a infância é o solo mais fértil para plantar amor, consciência e valores.
-              </p>
-              
-              <p className="author-description">
-                Com sensibilidade, humor e linguagem simbólica, Gabriel transforma histórias em 
-                pontes de empatia entre gerações.
-              </p>
-              
-              <div className="author-mission">
-                <blockquote>
-                  "Escrevo para lembrar que somos todos sementes. E que o amor é a terra onde podemos florescer."
-                </blockquote>
-                <cite>— Gabriel Jaccoud</cite>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Voices Section */}
+      <VoicesSection />
 
-      {/* Seção de Depoimentos */}
-      <section id="depoimentos" className="section testimonials-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">💬 O que dizem sobre Mostardinha</h2>
-            <p className="section-subtitle">Depoimentos de famílias, educadores e terapeutas</p>
-          </div>
-          
-          <div className="testimonials-grid">
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '100ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Mostardinha conquistou minha filha de 6 anos! Ela pede para ouvir a história toda noite. 
-                  As lições sobre amizade e autoconhecimento são transmitidas de forma tão natural e divertida."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Ana Paula Silva</h4>
-                    <span>Mãe da Sofia</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Behind Scenes Section */}
+      <BehindScenesSection />
 
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '200ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Como educadora, vejo o impacto positivo que Mostardinha tem nas crianças. 
-                  A história desperta a curiosidade e ensina valores importantes de forma lúdica."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Professora Maria Santos</h4>
-                    <span>Escola Crescer Feliz</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Wisdom Section */}
+      <WisdomSection />
 
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '300ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Uso Mostardinha em minhas sessões de terapia infantil. As crianças se identificam 
-                  com os personagens e isso facilita muito o trabalho com emoções e relacionamentos."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Dr. Carlos Mendes</h4>
-                    <span>Psicólogo Infantil</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Publisher Section */}
+      <PublisherSection />
 
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '400ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Meus gêmeos de 8 anos adoraram! Eles ficam cantando as músicas e imitando os personagens. 
-                  É incrível como a história ensina sobre respeito e amizade."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Roberto e Carla Lima</h4>
-                    <span>Pais do João e Pedro</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '500ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Como bibliotecária, recomendo Mostardinha para todas as famílias. 
-                  É uma obra que une entretenimento e educação de forma magistral."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Luciana Oliveira</h4>
-                    <span>Biblioteca Municipal</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="testimonial-card fade-in-up" style={{ animationDelay: '600ms' }}>
-              <div className="testimonial-content">
-                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p className="testimonial-text">
-                  "Mostardinha ajudou minha filha a superar a timidez. Ela se inspirou na coragem 
-                  dos personagens e agora é mais confiante para fazer novos amigos."
-                </p>
-                <div className="testimonial-author">
-                  <div className="author-info">
-                    <h4>Fernanda Costa</h4>
-                    <span>Mãe da Isabela</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="testimonials-cta fade-in-up">
-            <p>Junte-se a centenas de famílias e educadores que se encantaram com Mostardinha!</p>
-            <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
-              Quero o Livro Agora!
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Final CTA Section */}
+      <FinalCTASection />
 
       {/* Newsletter Section */}
       <section id="newsletter" className="section newsletter-section">
@@ -533,22 +404,31 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-logo">
-              <img src={mostardinha} alt="Mostardinha" />
-              <h3>Mostardinha</h3>
-            </div>
-            <p>Uma aventura afetiva que toca corações em Temperópolis</p>
-            <p className="copyright">© 2024 Gabriel Jaccoud. Todos os direitos reservados.</p>
+      <Footer />
+
+      {/* Modal para Dicas de Leitura */}
+      <div id="readingTipsModal" className={`modal ${isReadingTipsModalOpen ? 'active' : ''}`} aria-hidden={!isReadingTipsModalOpen} role="dialog" aria-labelledby="modalTitle">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3 id="modalTitle">Dicas para um Momento Mágico</h3>
+            <button id="closeTipsModal" className="modal-close-btn" aria-label="Fechar" onClick={() => setIsReadingTipsModalOpen(false)}>&times;</button>
+          </div>
+          <div className="modal-body">
+            <ul className="tips-list">
+              <li>🗣️ <strong>Leitura com vozes diferentes:</strong> Dê uma voz única para cada personagem. Isso torna a história viva e divertida!</li>
+              <li>🎧 <strong>Ouça o audiobook juntos:</strong> Aproveite a narração oficial e a trilha sonora para uma imersão completa.</li>
+              <li>🎭 <strong>Reencenem a história:</strong> Peça para seu filho representar seu personagem favorito. É uma forma lúdica de rever o conteúdo.</li>
+              <li>🎨 <strong>Crie arte com a imaginação:</strong> Desenhe cenas da ilha, crie cartazes dos personagens ou invente novas aventuras para eles.</li>
+              <li>💬 <strong>Converse sobre os sentimentos:</strong> Pergunte como o seu filho se sentiu com as escolhas dos personagens. A empatia nasce do diálogo.</li>
+            </ul>
+          </div>
+          <div className="modal-footer">
+            <p><em>O Mostardinha é mais que um livro. É um convite para o afeto.</em></p>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   )
 }
 
 export default App
-
-// Forçando novo deploy Mon Sep 22 08:07:02 EDT 2025
